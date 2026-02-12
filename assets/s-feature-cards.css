@@ -95,7 +95,7 @@
 
     .s-feature-cards .swiper-slide {
         height: auto;
-        padding: 30px 20px 49px 20px;
+        padding: 30px 20px;
     }
 
     /* Spacer slide: fixed width so last real card can scroll fully into view */

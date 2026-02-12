@@ -7,17 +7,20 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "current": {
-    "logo_width": 90,
+    "pre_order_product": "melody",
+    "logo": "shopify://shop_images/Group_11.png",
+    "logo_width": 140,
+    "favicon": "shopify://shop_images/Group_11_fb8bf94b-4fce-4ad6-a9d0-067aaf2df14f.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
-    "page_width": 1200,
+    "page_width": 1300,
     "spacing_sections": 0,
-    "spacing_grid_horizontal": 8,
-    "spacing_grid_vertical": 8,
+    "spacing_grid_horizontal": 4,
+    "spacing_grid_vertical": 4,
     "animations_reveal_on_scroll": true,
     "animations_hover_elements": "none",
     "buttons_border_thickness": 1,
@@ -117,13 +120,13 @@
     "social_pinterest_link": "",
     "social_tumblr_link": "",
     "social_vimeo_link": "",
-    "predictive_search_enabled": true,
+    "predictive_search_enabled": false,
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": true,
-    "cart_type": "notification",
-    "show_vendor": true,
-    "show_cart_note": true,
+    "cart_type": "drawer",
+    "show_vendor": false,
+    "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
     "sections": {

@@ -93,20 +93,26 @@
 }
 
 @media (max-width: 768px) {
+  .s-app-download__badges{
+    margin-top: 20px;
+  }
+  .s-app-download__title{
+    padding: 0 22px
+  }
   .s-app-download__inner {
-    gap: 24px;
+    gap: 53px;
   }
 
   .s-app-download__card {
-    padding: 24px 18px 28px;
-    border-radius: 24px;
+    padding: unset;
+    border-radius: 11.563px;
   }
 
   .s-app-download__content {
-    gap: 14px;
+    gap: 30px;
   }
 
   .s-app-download__badge-image {
-    width: clamp(130px, 40vw, 160px);
+    width: clamp(130px, 42.4vw, 160px);
   }
 }

@@ -74,7 +74,7 @@
   .s-image-with-text__card {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 28px 22px 32px;
+    padding: unset;
     text-align: center;
     background-color: unset;
   }
@@ -86,7 +86,7 @@
   }
 
   .s-image-with-text__image {
-    width: min(220px, 100%);
+    width: min(180px, 100%);
   }
 
   .s-image-with-text__content {

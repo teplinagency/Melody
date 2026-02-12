@@ -11,10 +11,8 @@
   width: 100%;
   max-width: 1276px;
   padding: 100px 64px 100px;
-  border-radius: 28px;
-  background: #141422;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  border-radius: 30px;
+  background: #131320;
   text-align: center;
 }
 
@@ -91,18 +89,29 @@
 }
 
 @media (max-width: 768px) {
+  .s-newsletter__note{
+    padding: 0 40px;
+  }
+  .s-newsletter__eyebrow{
+    margin-bottom: 15px;
+  }
+  .s-newsletter__title{
+    margin-bottom: 35px;
+    padding: 0 45px;
+  }
   .s-newsletter__card {
-    padding: 36px 24px 32px;
-    border-radius: 26px;
+    padding: 47px 14px;
   }
 
   .s-newsletter__form {
     max-width: 100%;
+    margin-bottom: 32px;
   }
 
   .s-newsletter__fields {
     flex-direction: column;
     align-items: stretch;
+    gap: 26px;
   }
 
   .s-newsletter__button {

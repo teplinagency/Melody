@@ -1,90 +1,46 @@
-(() => {
-  const SELECTOR = '.s-feature-cards';
-  const SLIDER_SELECTOR = '[data-s-feature-cards]';
-  const PAGINATION_SELECTOR = '.s-feature-cards__pagination';
-  const BREAKPOINT = '(max-width: 768px)';
+(function () {
+  const MOBILE = window.matchMedia('(max-width: 768px)');
+  const SECTION = '.s-feature-cards';
+  const SLIDER = '[data-s-feature-cards]';
 
-  const bindSection = (root) => {
-    if (!root || root.dataset.sFeatureCardsBound === 'true') return;
-
-    const slider = root.querySelector(SLIDER_SELECTOR);
-    if (!slider) return;
-
-    const pagination = root.querySelector(PAGINATION_SELECTOR);
-    const breakpoint = window.matchMedia(BREAKPOINT);
-    let swiperInstance = null;
-
-    const enable = () => {
-      if (swiperInstance || !window.Swiper) return;
-      swiperInstance = new Swiper(slider, {
-        slidesPerView: 1.5,
-        spaceBetween: 20,
-        // Space after last slide so it can scroll fully into view (match right padding)
-        slidesOffsetAfter: 32,
-        resistanceRatio: 0,
-      });
-    };
-
-    const disable = () => {
-      if (!swiperInstance) return;
-      swiperInstance.destroy(true, true);
-      swiperInstance = null;
-    };
-
-    const onChange = () => {
-      if (breakpoint.matches) {
-        enable();
-      } else {
-        disable();
-      }
-    };
-
-    const bindBreakpoint = () => {
-      onChange();
-      if (breakpoint.addEventListener) {
-        breakpoint.addEventListener('change', onChange);
-      } else {
-        breakpoint.addListener(onChange);
-      }
-    };
-
-    const waitForSwiper = () => {
-      if (window.Swiper) {
-        bindBreakpoint();
-        return;
-      }
-      let tries = 0;
-      const timer = setInterval(() => {
-        tries += 1;
-        if (window.Swiper) {
-          clearInterval(timer);
-          bindBreakpoint();
-        } else if (tries > 60) {
-          clearInterval(timer);
+  function run() {
+    if (!window.Swiper) return;
+    document.querySelectorAll(SECTION).forEach(function (section) {
+      const el = section.querySelector(SLIDER);
+      if (!el) return;
+      if (MOBILE.matches) {
+        if (!el._swiper) {
+          el._swiper = new window.Swiper(el, {
+            slidesPerView: 1.58,
+            spaceBetween: 20,
+            loop:true,
+          });
         }
-      }, 50);
-    };
-
-    root.dataset.sFeatureCardsBound = 'true';
-    waitForSwiper();
-  };
-
-  const bindAll = () => {
-    document.querySelectorAll(SELECTOR).forEach(bindSection);
-  };
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindAll, { once: true });
-  } else {
-    bindAll();
+      } else {
+        if (el._swiper) {
+          el._swiper.destroy(true, true);
+          el._swiper = null;
+        }
+      }
+    });
   }
 
-  document.addEventListener('shopify:section:load', (event) => {
-    if (!event.target) return;
-    if (event.target.matches(SELECTOR)) {
-      bindSection(event.target);
-    } else {
-      event.target.querySelectorAll?.(SELECTOR).forEach(bindSection);
+  function onReady() {
+    run();
+    MOBILE.addEventListener('change', run);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+  if (!window.Swiper) setTimeout(run, 300);
+
+  document.addEventListener('shopify:section:load', function (e) {
+    var target = e.target;
+    if (target && (target.matches(SECTION) || target.querySelector(SECTION))) {
+      run();
     }
   });
 })();

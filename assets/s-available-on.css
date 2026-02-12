@@ -109,6 +109,12 @@
 }
 
 @media screen and (max-width: 989px) {
+  .s-available-on__item{
+    gap: 20px;
+  }
+  .s-available-on__eyebrow{
+    letter-spacing: 0.32px;
+  }
   .s-available-on__grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -120,6 +126,7 @@
 
   .s-available-on__link {
     display: inline-flex;
+    margin-top: -11px;
   }
   .s-available-on__icon{
     margin: unset;

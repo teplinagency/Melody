@@ -107,7 +107,7 @@
         "padding-top": 0,
         "padding-bottom": 90,
         "padding-top-mobile": 0,
-        "padding-bottom-mobile": 40
+        "padding-bottom-mobile": 50
       }
     },
     "s_available_on_jWKQbw": {
@@ -217,7 +217,8 @@
         ".s-available-on__inner {max-width: 1180px;}",
         ".s-available-on__title {text-transform: uppercase;}",
         ".s-available-on__list {display: inline-block !important;}",
-        ".s-available-on__icon {display: none;}"
+        ".s-available-on__icon {display: none;}",
+        "@media screen and (max-width: 989px) {.s-available-on__item {gap: 8px; } .s-available-on__grid {grid-template-columns: 1fr; gap: 40px; }}"
       ],
       "name": "S-Available On",
       "settings": {
@@ -246,7 +247,7 @@
         "gradient_z_index": 0,
         "padding-top": 90,
         "padding-bottom": 120,
-        "padding-top-mobile": 70,
+        "padding-top-mobile": 60,
         "padding-bottom-mobile": 120
       }
     },
