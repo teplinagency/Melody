@@ -23,6 +23,8 @@
         "enable_language_selector": true,
         "payment_enable": true,
         "show_policy": true,
+        "footer_legal_menu": "",
+        "footer_copyright_text": "© 2026 Melody TM. All rights reserved. Melody, MELODY are trademarks of Melody TM and may not be used without permission.",
         "margin_top": 0,
         "padding_top": 52,
         "padding_bottom": 52
