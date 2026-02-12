@@ -19,6 +19,7 @@
   top: var(--bg-gradient-y, 50%);
   width: var(--bg-gradient-size, 120%);
   z-index: var(--bg-gradient-z, 0);
+  max-height: 1240px;
 }
 
 .s-app-download__inner {
