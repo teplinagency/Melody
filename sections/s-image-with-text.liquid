@@ -1,0 +1,142 @@
+{{ 's-image-with-text.css' | asset_url | stylesheet_tag }}
+{% render 'section-padding' %}
+
+<section id="section-{{ section.id }}" class="s-image-with-text typography">
+  <div class="s-image-with-text__inner page-width">
+    <div class="s-image-with-text__card">
+      <div class="s-image-with-text__media">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              class: 's-image-with-text__image',
+              loading: 'lazy',
+              alt: section.settings.image.alt | default: section.settings.heading
+          }}
+        {% endif %}
+      </div>
+
+      <div class="s-image-with-text__content">
+        {% if section.settings.eyebrow_text != blank %}
+          <p class="s-image-with-text__eyebrow typography typography--h4 typography--grey typography--uppercase">
+            {{ section.settings.eyebrow_text }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="s-image-with-text__title typography typography--h2 typography--light">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <p class="s-image-with-text__text typography typography--paragraph typography--grey">
+            {{ section.settings.text }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a class="btn btn--primary s-image-with-text__cta" href="{{ section.settings.button_link | default: '#' }}">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "S-Image With Text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "EVERY DETAIL IS IMPORTANT"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>The first AI stroker that learns your rhythm and takes control.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Every detail is engineered for immersive precision: a brushless motor delivers smooth, seamless motion; silent operation keeps the focus entirely on sensation; and wireless connectivity unlocks full interactive control through VR or AI-synced scripts."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Try it first"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-Image With Text"
+    }
+  ]
+}
+{% endschema %}
