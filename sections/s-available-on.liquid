@@ -1,0 +1,207 @@
+{{ 's-available-on.css' | asset_url | stylesheet_tag }}
+{% render 'section-padding' %}
+
+<section id="section-{{ section.id }}" class="s-available-on typography">
+  <div class="s-available-on__inner page-width">
+    {% if section.settings.heading != blank %}
+      <p class="s-available-on__eyebrow typography typography--paragraph typography--uppercase typography--light">
+        {{ section.settings.heading }}
+      </p>
+    {% endif %}
+
+    <div class="s-available-on__grid">
+      {% for block in section.blocks %}
+        <div class="s-available-on__item" {{ block.shopify_attributes }}>
+          <div class="s-available-on__icon">
+            {% case block.settings.icon %}
+              {% when 'none' %}
+              {% comment %} No icon {% endcomment %}
+              {% when 'headset' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="57" height="31" viewBox="0 0 57 31" fill="none">
+                  <path d="M15.4482 1H41.1943C49.1737 1 55.6426 7.46884 55.6426 15.4482C55.6425 21.6003 52.5233 27.1456 45.6934 29.0918C42.2363 30.0768 38.5182 28.8864 35.1143 26.96L31.6211 24.9824C29.7899 23.9461 27.5559 23.9183 25.6992 24.9082L21.3477 27.2285C18.0688 28.9768 14.5365 30.0504 11.2305 29.1689C4.20145 27.2947 1.00008 21.6804 1 15.4482C1 7.59348 7.26808 1.20262 15.0752 1.00488L15.4482 1Z" stroke="white" stroke-width="2"/>
+                </svg>
+              {% when 'devices' %}
+                <svg width="90" height="55" viewBox="0 0 90 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M83.1396 0.00878906C86.5263 0.180318 89.2195 2.97999 89.2197 6.40918V47.9795L89.2109 48.3096C89.0445 51.5868 86.417 54.2149 83.1396 54.3809L82.8105 54.3887H19.2334C15.6938 54.3884 12.8244 51.5191 12.8242 47.9795V6.40918C12.8244 2.86961 15.6938 0.000241075 19.2334 0H82.8105L83.1396 0.00878906ZM19.2334 2C16.7984 2.00024 14.8244 3.97417 14.8242 6.40918V47.9795C14.8244 50.4145 16.7984 52.3884 19.2334 52.3887H82.8105C85.2456 52.3884 87.2196 50.4145 87.2197 47.9795V6.40918C87.2195 3.97417 85.2455 2.00024 82.8105 2H19.2334ZM69.1191 48.2383C69.6714 48.2383 70.1191 48.686 70.1191 49.2383C70.1191 49.7906 69.6714 50.2383 69.1191 50.2383H32.9219C32.3696 50.2383 31.9219 49.7906 31.9219 49.2383C31.9219 48.686 32.3696 48.2383 32.9219 48.2383H69.1191Z" fill="white"/>
+                  <rect x="1" y="12.6589" width="23.6381" height="40.7302" rx="5.40954" fill="#0B0B11" stroke="white" stroke-width="2"/>
+                  <path d="M8.54297 13.2754H17.089C17.089 14.38 16.1936 15.2754 15.089 15.2754H10.543C9.4384 15.2754 8.54297 14.38 8.54297 13.2754Z" fill="white"/>
+                  <rect x="6.40845" y="48.2383" width="12.8191" height="1.65964" rx="0.829821" fill="white"/>
+                </svg>
+              {% when 'screen' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="62" height="50" viewBox="0 0 62 50" fill="none">
+                 <path d="M45.3447 47.8887C45.897 47.8887 46.3447 48.3364 46.3447 48.8887C46.3447 49.441 45.897 49.8887 45.3447 49.8887H16.4492C15.8969 49.8887 15.4492 49.441 15.4492 48.8887C15.4492 48.3364 15.8969 47.8887 16.4492 47.8887H45.3447ZM54.4658 0.00976562C58.5467 0.216807 61.7918 3.59138 61.792 7.72363V33.4707L61.7822 33.8682C61.582 37.8175 58.4151 40.9842 54.4658 41.1846L54.0684 41.1943H7.72363C3.59131 41.1941 0.216658 37.9491 0.00976562 33.8682L0 33.4707V7.72363C0.000189983 3.45809 3.4581 0.000233001 7.72363 0H54.0684L54.4658 0.00976562ZM7.72363 2C4.56267 2.00023 2.00019 4.56267 2 7.72363V33.4707C2.00005 36.6318 4.56258 39.1941 7.72363 39.1943H54.0684C57.2294 39.1941 59.792 36.6318 59.792 33.4707V7.72363C59.7918 4.56265 57.2293 2.0002 54.0684 2H7.72363Z" fill="white"/>
+                </svg>
+            {% endcase %}
+          </div>
+
+          {% if block.settings.title != blank %}
+            <h3 class="s-available-on__title typography typography--h4 typography--light">
+              {{ block.settings.title }}
+            </h3>
+          {% endif %}
+
+          {% if block.settings.link_label != blank %}
+            <a class="s-available-on__link typography typography--paragraph typography--grey" href="{{ block.settings.link_url | default: '#' }}">
+              {{ block.settings.link_label }}
+              <span class="s-available-on__link-icon" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 10L10 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M4 2H10V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </a>
+          {% endif %}
+
+          {% if block.settings.items != blank %}
+            <div class="s-available-on__list typography typography--h4">
+              {{ block.settings.items }}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "S-Available On",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "AVAILABLE ON"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "platform",
+      "name": "Platform",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "headset",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "headset",
+              "label": "Headsets"
+            },
+            {
+              "value": "devices",
+              "label": "Smartphones and tablets"
+            },
+            {
+              "value": "screen",
+              "label": "Big screen"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Headsets"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Check your device"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "richtext",
+          "id": "items",
+          "label": "List items (one per line)",
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-Available On",
+      "blocks": [
+        {
+          "type": "platform",
+          "settings": {
+            "icon": "headset",
+            "title": "Headsets",
+            "link_label": "Check your device",
+          }
+        },
+        {
+          "type": "platform",
+          "settings": {
+            "icon": "devices",
+            "title": "Smartphones and tablets",
+            "link_label": "Check your device",
+          }
+        },
+        {
+          "type": "platform",
+          "settings": {
+            "icon": "screen",
+            "title": "Big screen",
+            "link_label": "Check your device",
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

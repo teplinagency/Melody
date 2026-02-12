@@ -1,0 +1,321 @@
+{{'s-hero-banner.css' | asset_url | stylesheet_tag}}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+{% render 'section-padding' %}
+
+<section
+  id="section-{{ section.id }}"
+  class="s-hero-banner typography"
+  style="
+    --bg-gradient-x: {{ section.settings.gradient_position_x }}%;
+    --bg-gradient-y: {{ section.settings.gradient_position_y }}%;
+    --bg-gradient-size: {{ section.settings.gradient_size }}%;
+    --bg-gradient-z: {{ section.settings.gradient_z_index }};
+    --bg-circles-x: {{ section.settings.circles_position_x }}%;
+    --bg-circles-y: {{ section.settings.circles_position_y }}%;
+    --bg-circles-size: {{ section.settings.circles_size }}%;
+    --bg-circles-z: {{ section.settings.circles_z_index }};
+  "
+>
+  {% if section.settings.gradient_image != blank %}
+    {{ section.settings.gradient_image
+      | image_url: width: 2400
+      | image_tag: class: 's-hero-banner__background s-hero-banner__background--gradient', loading: 'lazy', alt: 'Gradient background'
+    }}
+  {% endif %}
+  {% if section.settings.circles_image != blank %}
+    {{ section.settings.circles_image
+      | image_url: width: 2400
+      | image_tag: class: 's-hero-banner__background s-hero-banner__background--circles', loading: 'lazy', alt: 'Circles background'
+    }}
+  {% endif %}
+
+  <div class="s-hero-banner__inner">
+    {% if section.settings.heading != blank %}
+      <h1 class="s-hero-banner__title typography typography--h1 typography--light">
+        {{ section.settings.heading }}
+      </h1>
+    {% endif %}
+    {% if section.settings.eyebrow_text != blank %}
+      <p class="s-hero-banner__eyebrow typography typography--h4 typography--grey typography--uppercase">
+        {{ section.settings.eyebrow_text }}
+      </p>
+    {% endif %}
+ 
+
+    {% if section.settings.hero_image != blank %}
+      <div class="s-hero-banner__media">
+        {{ section.settings.hero_image
+          | image_url: width: 800
+          | image_tag: class: 's-hero-banner__image', loading: 'lazy', alt: section.settings.hero_image.alt | default: section.settings.heading
+        }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      {%- if settings.pre_order_product != blank -%}
+        {%- assign hero_product = settings.pre_order_product -%}
+        {%- assign hero_product_form_id = 'S-Hero-ProductForm-' | append: section.id -%}
+        <product-form class="s-hero-banner__cta product-form" data-section-id="{{ section.id }}">
+          <div class="product-form__error-message-wrapper" role="alert" hidden>
+            <span class="svg-wrapper">
+              {{- 'icon-error.svg' | inline_asset_content -}}
+            </span>
+            <span class="product-form__error-message"></span>
+          </div>
+          {%- form 'product',
+            hero_product,
+            id: hero_product_form_id,
+            class: 'form',
+            novalidate: 'novalidate',
+            data-type: 'add-to-cart-form'
+          -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ hero_product.selected_or_first_available_variant.id }}"
+              {% if hero_product.selected_or_first_available_variant.available == false
+                or hero_product.selected_or_first_available_variant == null
+              %}
+                disabled
+              {% endif %}
+              class="product-variant-id"
+            >
+            <button
+              id="ProductSubmitButton-{{ section.id }}"
+              type="submit"
+              name="add"
+              class="btn btn--primary btn--banner"
+              {% if hero_product.selected_or_first_available_variant.available == false
+                or hero_product.selected_or_first_available_variant == null
+              %}
+                disabled
+              {% endif %}
+            >
+              <span>
+                {%- if hero_product.selected_or_first_available_variant == null -%}
+                  {{ 'products.product.unavailable' | t }}
+                {%- elsif hero_product.selected_or_first_available_variant.available == false -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- else -%}
+                  {{ section.settings.button_label }} - {{ hero_product.price | money}}
+                {%- endif -%}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
+          {%- endform -%}
+        </product-form>
+      {%- else -%}
+        <a
+          class="btn btn--primary s-hero-banner__cta"
+          href="{{ section.settings.button_link | default: '#' }}"
+        >
+          {{ section.settings.button_label }} 
+        </a>
+      {%- endif -%}
+    {% endif %}
+
+    {% if section.settings.note_text != blank %}
+      <p class="s-hero-banner__note typography typography--paragraph typography--grey">
+        {{ section.settings.note_text }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "S-Hero Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The AI Control Interactive Toy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product to add to cart"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Pre-order now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "note_text",
+      "label": "Note text",
+      "default": "Pre-orders available now. Shipping from May 2026."
+    },
+    {
+      "type": "header",
+      "content": "Background: gradient"
+    },
+    {
+      "type": "image_picker",
+      "id": "gradient_image",
+      "label": "Gradient image"
+    },
+    {
+      "type": "range",
+      "id": "gradient_position_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Gradient position X",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "gradient_position_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Gradient position Y",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "gradient_size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Gradient size",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "gradient_z_index",
+      "min": -5,
+      "max": 10,
+      "step": 1,
+      "label": "Gradient z-index",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Background: circles"
+    },
+    {
+      "type": "image_picker",
+      "id": "circles_image",
+      "label": "Circles image"
+    },
+    {
+      "type": "range",
+      "id": "circles_position_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Circles position X",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "circles_position_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Circles position Y",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "circles_size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Circles size",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "circles_z_index",
+      "min": -5,
+      "max": 10,
+      "step": 1,
+      "label": "Circles z-index",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-Hero Banner"
+    }
+  ]
+}
+
+{% endschema %}

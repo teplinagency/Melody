@@ -79,7 +79,7 @@
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1.4rem;
 }
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
@@ -102,7 +102,7 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 750px) {
   .page-width {
-    padding: 0 5rem;
+    padding: 0 1rem;
   }
 
   .header.page-width,
@@ -1893,13 +1893,13 @@ input[type='checkbox'] {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  /* box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity)); */
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
 
 .quantity:before {
-  background: rgb(var(--color-background));
+  background: transparent;
   pointer-events: none;
   content: '';
   position: absolute;
@@ -2343,18 +2343,18 @@ input[type='checkbox'] {
 .header-wrapper {
   display: block;
   position: relative;
-  background-color: rgb(var(--color-background));
-}
+  /* background-color: rgb(var(--color-background)); */
+  background: rgba(0, 0, 1, 0.50);
+} 
 
 .header-wrapper--border-bottom {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
 .header {
-  display: grid;
-  grid-template-areas: 'left-icons heading icons';
-  grid-template-columns: 1fr 2fr 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 749px) {
@@ -2508,6 +2508,10 @@ input[type='checkbox'] {
   grid-area: icons;
   justify-self: end;
   padding-right: 0.8rem;
+  align-items: center;
+}
+.header__icons svg path{
+  fill: #fff;
 }
 
 .header__icons .shopify-app-block {
@@ -2614,7 +2618,8 @@ menu-drawer + .header__search {
 }
 
 .header__search {
-  display: inline-flex;
+  /* display: inline-flex; */
+  display: none;
   line-height: 0;
 }
 
@@ -2794,7 +2799,7 @@ details[open] > .header__submenu {
 .header__menu-item {
   padding: 1.2rem;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.75);
+  color: var(--Text-Primary)  
 }
 
 .header__menu-item:hover {
@@ -2932,8 +2937,8 @@ details-disclosure > details {
 }
 
 .gradient {
-  background: rgb(var(--color-background));
-  background: var(--gradient-background);
+  /* background: rgb(var(--color-background)); */
+  /* background: var(--gradient-background); */
   background-attachment: fixed;
 }
 

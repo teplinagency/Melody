@@ -1,0 +1,134 @@
+{{ 's-feature-cards.css' | asset_url | stylesheet_tag }}
+{% render 'section-padding' %}
+
+<section id="section-{{ section.id }}" class="s-feature-cards typography">
+  <div class="s-feature-cards__inner page-width">
+    <div class="s-feature-cards__slider swiper" data-s-feature-cards>
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="s-feature-cards__card swiper-slide" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h3 class="s-feature-cards__title typography typography--h3 typography--light">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p class="s-feature-cards__text typography typography--paragraph typography--grey">
+                {{ block.settings.text }}
+              </p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{{ 's-feature-cards.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "S-Feature Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Brushless Motor"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "A next-gen motor delivers ultra-smooth, precise, whisper-quiet strokes."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-Feature Cards",
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Brushless Motor",
+            "text": "A next-gen motor delivers ultra-smooth, precise, whisper-quiet strokes."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "AI scripts",
+            "text": "AI-generated scripts sync every stroke to what's happening on your screen."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Interactive Experience",
+            "text": "Feel real-time interactive haptics that react instantly to motion, audio and on-screen action."
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Available on phones",
+            "text": "Seamless VR sync with Apple Vision Pro, Meta Quest, PlayStation VR and other leading headsets."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

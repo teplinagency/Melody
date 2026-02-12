@@ -133,7 +133,7 @@
                         >
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
-                            <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a>
+                            {% comment %} <a href="{{ item.url }}" class="cart-item__link" tabindex="-1" aria-hidden="true"> </a> {% endcomment %}
                             <img
                               class="cart-item__image"
                               src="{{ item.image | image_url: width: 300 }}"
@@ -150,10 +150,12 @@
                             <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                           {%- endif -%}
 
-                          <a href="{{ item.url }}" class="cart-item__name h4 break">
+                          {% comment %} <a href="{{ item.url }}" class="cart-item__name h4 break">
                             {{- item.product.title | escape -}}
-                          </a>
-
+                          </a> {% endcomment %}
+                          <span class="h4 break">
+                            {{- item.product.title | escape -}}
+                          </span>
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">
                               <span class="visually-hidden">
@@ -565,7 +567,7 @@
           <button
             type="submit"
             id="CartDrawer-Checkout"
-            class="cart__checkout-button button"
+            class="cart__checkout-button btn btn--primary"
             name="checkout"
             form="CartDrawer-Form"
             {% if cart == empty %}

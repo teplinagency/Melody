@@ -9,62 +9,23 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
+        "collection": "all",
+        "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -72,13 +33,251 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "s_hero_banner_Azj94n": {
+      "type": "s-hero-banner",
+      "name": "S-Hero Banner",
+      "settings": {
+        "heading": "The AI Control Interactive Toy",
+        "eyebrow_text": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR",
+        "hero_image": "shopify://shop_images/2025.02.25_render_for_web_06_1.png",
+        "product": "melody",
+        "button_label": "Pre-order now",
+        "button_link": "",
+        "note_text": "Pre-orders available now. Shipping from May 2026.",
+        "gradient_image": "shopify://shop_images/Vector_42.png",
+        "gradient_position_x": 50,
+        "gradient_position_y": 50,
+        "gradient_size": 100,
+        "gradient_z_index": 0,
+        "circles_image": "shopify://shop_images/Group_22.png",
+        "circles_position_x": 50,
+        "circles_position_y": 54,
+        "circles_size": 80,
+        "circles_z_index": 1,
+        "padding-top": 0,
+        "padding-bottom": 100,
+        "padding-top-mobile": 0,
+        "padding-bottom-mobile": 120
+      }
+    },
+    "s_feature_cards_MV3kqJ": {
+      "type": "s-feature-cards",
+      "blocks": {
+        "card_N0L5GL": {
+          "type": "card",
+          "settings": {
+            "title": "Brushless Motor",
+            "text": "A next-gen motor delivers ultra-smooth, precise, whisper-quiet strokes."
+          }
+        },
+        "card_Kd7VP2": {
+          "type": "card",
+          "settings": {
+            "title": "AI scripts",
+            "text": "AI-generated scripts sync every stroke to what's happening on your screen."
+          }
+        },
+        "card_qgP9Lz": {
+          "type": "card",
+          "settings": {
+            "title": "Interactive Experience",
+            "text": "Feel real-time interactive haptics that react instantly to motion, audio and on-screen action."
+          }
+        },
+        "card_gCPtbQ": {
+          "type": "card",
+          "settings": {
+            "title": "Available on phones",
+            "text": "Seamless VR sync with Apple Vision Pro, Meta Quest, PlayStation VR and other leading headsets."
+          }
+        }
+      },
+      "block_order": [
+        "card_N0L5GL",
+        "card_Kd7VP2",
+        "card_qgP9Lz",
+        "card_gCPtbQ"
+      ],
+      "settings": {
+        "padding-top": 0,
+        "padding-bottom": 90,
+        "padding-top-mobile": 0,
+        "padding-bottom-mobile": 50
+      }
+    },
+    "s_available_on_jWKQbw": {
+      "type": "s-available-on",
+      "blocks": {
+        "platform_nfexjB": {
+          "type": "platform",
+          "settings": {
+            "icon": "headset",
+            "title": "Headsets",
+            "link_label": "Check your device",
+            "link_url": "",
+            "items": "<ul><li>Apple Vision Pro</li><li>Meta Quest 3 / Meta Quest 3S</li><li>PlayStation VR2</li><li>Valve Index</li><li>HTC Vive Pro 2 / Vive Focus</li><li>Pico 4</li></ul>"
+          }
+        },
+        "platform_4C4zDL": {
+          "type": "platform",
+          "settings": {
+            "icon": "devices",
+            "title": "Smartphones and tablets",
+            "link_label": "Check your device",
+            "link_url": "",
+            "items": "<ul><li>iPhone (latest iOS)</li><li>iPad</li><li>Mac (Safari / Chrome)</li><li>Samsung Galaxy phones</li><li>Google Pixel phones</li><li>Other modern Android phones</li></ul>"
+          }
+        },
+        "platform_wF9mmn": {
+          "type": "platform",
+          "settings": {
+            "icon": "screen",
+            "title": "Big screen",
+            "link_label": "Check your device",
+            "link_url": "",
+            "items": "<ul><li>Apple AirPlay (Apple TV & compatible TVs)</li><li>Google Chromecast / Chromecast built-in TVs</li><li>Native browser on Smart TVs & desktop monitors</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "platform_nfexjB",
+        "platform_4C4zDL",
+        "platform_wF9mmn"
+      ],
+      "name": "S-Available On",
+      "settings": {
+        "heading": "AVAILABLE ON",
+        "padding-top": 0,
+        "padding-bottom": 0,
+        "padding-top-mobile": 0,
+        "padding-bottom-mobile": 0
+      }
+    },
+    "s_image_with_text_yEmBBr": {
+      "type": "s-image-with-text",
+      "name": "S-Image With Text",
+      "settings": {
+        "eyebrow_text": "EVERY DETAIL IS IMPORTANT",
+        "heading": "<p>The first AI stroker<br/>that learns your rhythm <br/>and takes control.</p>",
+        "text": "Every detail is engineered for immersive precision: a brushless motor delivers smooth, seamless motion; silent operation keeps the focus entirely on sensation; and wireless connectivity unlocks full interactive control through VR or AI-synced scripts.",
+        "button_label": "Try it first",
+        "button_link": "",
+        "image": "shopify://shop_images/Rectangle_16.png",
+        "padding-top": 110,
+        "padding-bottom": 0,
+        "padding-top-mobile": 110,
+        "padding-bottom-mobile": 0
+      }
+    },
+    "s_available_on_bAB63F": {
+      "type": "s-available-on",
+      "blocks": {
+        "platform_gipcyA": {
+          "type": "platform",
+          "settings": {
+            "icon": "none",
+            "title": "1–150",
+            "link_label": "",
+            "link_url": "",
+            "items": "<p>Stroke speed per minute</p>"
+          }
+        },
+        "platform_hBNB4N": {
+          "type": "platform",
+          "settings": {
+            "icon": "none",
+            "title": "4.7 in / 12 cm",
+            "link_label": "",
+            "link_url": "",
+            "items": "<p>Stroke length</p>"
+          }
+        },
+        "platform_ba6Cib": {
+          "type": "platform",
+          "settings": {
+            "icon": "none",
+            "title": "<1 kg / 2.2 lb",
+            "link_label": "",
+            "link_url": "",
+            "items": "<p>Lightweight<br/><br/></p>"
+          }
+        }
+      },
+      "block_order": [
+        "platform_gipcyA",
+        "platform_hBNB4N",
+        "platform_ba6Cib"
+      ],
+      "custom_css": [
+        ".s-available-on__inner {max-width: 1180px;}",
+        ".s-available-on__title {text-transform: uppercase;}",
+        ".s-available-on__list {display: inline-block !important;}",
+        ".s-available-on__icon {display: none;}",
+        "@media screen and (max-width: 989px) {.s-available-on__item {gap: 8px; } .s-available-on__grid {grid-template-columns: 1fr; gap: 40px; }}"
+      ],
+      "name": "S-Available On",
+      "settings": {
+        "heading": "",
+        "padding-top": 130,
+        "padding-bottom": 0,
+        "padding-top-mobile": 100,
+        "padding-bottom-mobile": 0
+      }
+    },
+    "s_app_download_ikXMzN": {
+      "type": "s-app-download",
+      "name": "S-App Download",
+      "settings": {
+        "heading": "Enjoy Melody with Haptics Connect.",
+        "text": "The app that makes Melody truly yours. Fine-tune rhythm, depth, and intensity — or sync instantly with someone miles away. Every sensation, perfectly in sync.",
+        "image": "shopify://shop_images/Frame_2147238448.png",
+        "app_store_badge": "shopify://shop_images/download-on-the-app-store-apple-logo-png-transparent_1.png",
+        "app_store_link": "https://apps.apple.com/us/app/haptics-connect-2-0/id6748214785",
+        "google_play_badge": "shopify://shop_images/1664287128google-play-store-logo-png_1.png",
+        "google_play_link": "https://play.google.com/store/apps/details?id=com.haptics.connect2",
+        "gradient_image": "shopify://shop_images/Vector_42.png",
+        "gradient_position_x": 50,
+        "gradient_position_y": 50,
+        "gradient_size": 100,
+        "gradient_z_index": 0,
+        "padding-top": 90,
+        "padding-bottom": 120,
+        "padding-top-mobile": 60,
+        "padding-bottom-mobile": 120
+      }
+    },
+    "s_newsletter_g0J4mP": {
+      "type": "s-newsletter",
+      "name": "S-Newsletter",
+      "settings": {
+        "eyebrow_text": "RESERVE YOURS",
+        "heading": "Be first to feel what's next.",
+        "email_placeholder": "Your e-mail",
+        "button_label": "Get it now",
+        "success_message": "Thanks for joining the list.",
+        "note_text": "Looking for more information?",
+        "note_link_label": "Check the forum",
+        "note_link_url": "",
+        "padding-top": 0,
+        "padding-bottom": 0,
+        "padding-top-mobile": 0,
+        "padding-bottom-mobile": 0
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "s_hero_banner_Azj94n",
+    "s_feature_cards_MV3kqJ",
+    "s_available_on_jWKQbw",
+    "s_image_with_text_yEmBBr",
+    "s_available_on_bAB63F",
+    "s_app_download_ikXMzN",
+    "s_newsletter_g0J4mP"
   ]
 }

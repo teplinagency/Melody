@@ -1,0 +1,283 @@
+/* PP Neue Montreal - custom fonts */
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Book.ttf') format('truetype');
+    font-weight: 350;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('PPNeueMontreal-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --Body:hsl(240, 21%, 5%);
+    --Text-Primary:#FFFFFF;
+    --Text-Secondary:#74799B;
+    --Text-Grad: linear-gradient(270deg, #4CFFCC 8.3%, #909FFF 100%);
+    --Button-Background-Primary: linear-gradient(270deg, #4CFFCC 8.3%, #909FFF 100%);
+    --Button-Border-Secondary: #4CFFCC;
+    --Button-Color-Secondary: linear-gradient(270deg, #4CFFCC 8.3%, #909FFF 100%) ;
+    --Button-Text-Banner:#000;
+    --Button-Text:#131320;
+    --Button-Box-Shadow: 0 4px 20px 0 #4DFFCD;
+    --Button-Border-Radius: 40px;
+    --Button-Background-Alternative:#6176FF;
+    --Button-Box-Shadow-Alternative: 0 0 11px 0 rgba(181, 191, 255, 0.70);
+    --Button-Text-Alternative:#FFF;
+}
+    footer,
+    body{
+        background-color: var(--Body);
+        color: var(--Text-Primary);
+    }
+    
+    .typography {
+        font-family: "PP Neue Montreal";
+        font-style: normal;
+        letter-spacing: 0;
+    }
+    .typography--w-400{
+        font-weight:400;
+    }
+    .typography--w-500{
+        font-weight:500;
+    }
+    .typography--w-600{
+        font-weight:600;
+    }
+    .typography--h1 {
+        font-size: 42px;
+        font-style: normal;
+        line-height: 130%;
+    }
+    .typography--h2 {
+        font-size: 32px;
+        font-style: normal;
+        line-height: 120%; 
+    }
+    .typography--h3 {
+        font-size: 24px;
+        font-style: normal;
+        line-height: 120%; 
+    }
+    
+    .typography--h4 {
+        font-size: 18px;
+        font-style: normal;
+        line-height: 130%;
+        letter-spacing: 0.36px;
+    }
+    
+    .typography--paragraph-big{
+        font-size: 18px;
+        font-style: normal;
+        line-height: 120%; 
+    }
+    .typography--paragraph{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 120%; 
+    }
+    .typography--slim{
+        font-size: 16px;
+        font-style: normal;
+        line-height: 120%;
+    }
+    .typography--light{
+        color:var(--Text-Primary);
+    }
+    .typography--grey{
+        color:var(--Text-Secondary);
+    }
+    .typography--gradient{
+        background: var(--Text-Grad);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .typography--center{
+        text-align: center;
+    }
+    .typography--uppercase{
+        text-transform: uppercase;
+    }
+    .typography--underline{
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
+    }
+
+    .typography--link{
+        text-decoration: unset;
+    }
+    
+    .btn{
+        padding: 16.953px 50.791px;
+        border-radius: var(--Button-Border-Radius);
+        cursor: pointer;
+        color: var(--Button-Text);
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; 
+        text-decoration: unset;
+        border: 1px solid transparent;
+    }
+    .btn:hover{
+        background: unset;
+        border: 1px solid var(--Button-Border-Secondary);
+        background: var(--Button-Color-Secondary);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .btn--banner{
+        color: var(--Button-Text-Banner);
+        text-align: center;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 120%; 
+    }
+    .btn--small{
+        padding: 10px 20px;
+    }
+    .btn--primary{
+        background: var(--Button-Background-Primary);
+        border: 1px solid transparent;
+        box-shadow: var(--Button-Box-Shadow);
+        color: var(--Button-Text);
+    }
+    
+    .btn--secondary{
+        background: unset;
+        border: 1px solid var(--Button-Border-Secondary);
+        background: var(--Button-Color-Secondary);
+        padding: 9.5px 20px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .scrolled-past-header .header__icons .btn--secondary{
+        background: unset;
+        border: 1px solid var(--Button-Border-Secondary);
+        background: var(--Button-Color-Secondary);
+        padding: 10px 20px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        color: var(--Button-Text);
+        background-clip: unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        font-weight: 600;
+        border: 1px solid transparent;
+    }
+
+    .btn--secondary:hover{
+        background-color: var(--Button-Background-Primary);
+        border: 1px solid var(--Button-Border-Primary);
+        box-shadow: var(--Button-Box-Shadow);
+        color: var(--Button-Text);
+        background-clip: unset;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        font-weight: 600;
+    }
+    
+    .btn--alternative{
+        background: var(--Button-Background-Alternative);
+        border: 1px solid var(--Button-Border-Alternative);
+        box-shadow: var(--Button-Box-Shadow-Alternative);
+        color: var(--Button-Text-Alternative);
+    }
+    
+    
+    @media (max-width: 768px) {
+        .header__icons .btn--secondary {
+            padding: 10px 20px;
+        }
+        .typography--h1 {
+            font-size: 36px;
+            line-height: 130%;
+        }
+        .typography--h2 {
+            font-size: 26px;
+            line-height: 120%;
+        }
+        .typography--h3 {
+            font-size: 18px;
+            line-height: 120%;
+        }
+        .typography--h4 {
+            font-size: 16px;
+            line-height: 130%; 
+            letter-spacing: 0.32px;
+        }
+        .typography--paragraph-big{
+            font-size: 16px;
+            line-height: 120%; 
+        }
+        .typography--slim{
+            font-size: 15px;
+            line-height: 120%; 
+        }
+        .btn{
+            font-size: 15.842px;
+            padding: 15.805px 40.232px;
+        }
+        .btn--banner{
+            padding: 16px;
+            font-size: 20px;
+            margin-top: 51px;
+        }
+    }

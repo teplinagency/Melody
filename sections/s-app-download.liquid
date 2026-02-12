@@ -1,0 +1,229 @@
+{{ 's-app-download.css' | asset_url | stylesheet_tag }}
+{% render 'section-padding' %}
+
+<section
+  id="section-{{ section.id }}"
+  class="s-app-download typography"
+  style="
+    --bg-gradient-x: {{ section.settings.gradient_position_x }}%;
+    --bg-gradient-y: {{ section.settings.gradient_position_y }}%;
+    --bg-gradient-size: {{ section.settings.gradient_size }}%;
+    --bg-gradient-z: {{ section.settings.gradient_z_index }};
+  "
+>
+  {% if section.settings.gradient_image != blank %}
+    {{ section.settings.gradient_image
+      | image_url: width: 2400
+      | image_tag: class: 's-app-download__background s-app-download__background--gradient', loading: 'lazy', alt: 'Gradient background'
+    }}
+  {% endif %}
+
+  <div class="s-app-download__inner page-width">
+    <div class="s-app-download__card">
+      <div class="s-app-download__media">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag:
+              class: 's-app-download__image',
+              loading: 'lazy',
+              alt: section.settings.image.alt | default: section.settings.heading
+          }}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="s-app-download__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="s-app-download__title typography typography--h2 typography--light typography--center">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <p class="s-app-download__text typography typography--paragraph typography--grey typography--center">
+          {{ section.settings.text }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.app_store_badge != blank or section.settings.google_play_badge != blank %}
+        <div class="s-app-download__badges">
+          {% if section.settings.app_store_badge != blank %}
+            <a
+              target="_blank"
+              class="s-app-download__badge"
+              href="{{ section.settings.app_store_link | default: '#' }}"
+              aria-label="Download on the App Store"
+            >
+              {{ section.settings.app_store_badge
+                | image_url: width: 360
+                | image_tag: class: 's-app-download__badge-image', loading: 'lazy', alt: 'Download on the App Store'
+              }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.google_play_badge != blank %}
+            <a
+              target="_blank"
+              class="s-app-download__badge"
+              href="{{ section.settings.google_play_link | default: '#' }}"
+              aria-label="Get it on Google Play"
+            >
+              {{ section.settings.google_play_badge
+                | image_url: width: 360
+                | image_tag: class: 's-app-download__badge-image', loading: 'lazy', alt: 'Get it on Google Play'
+              }}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "S-App Download",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Enjoy Melody with Haptics Connect."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "The app that makes Melody truly yours. Fine-tune rhythm, depth, and intensity — or sync instantly with someone miles away. Every sensation, perfectly in sync."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_badge",
+      "label": "App Store badge"
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store link"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_play_badge",
+      "label": "Google Play badge"
+    },
+    {
+      "type": "url",
+      "id": "google_play_link",
+      "label": "Google Play link"
+    },
+    {
+      "type": "header",
+      "content": "Background: gradient"
+    },
+    {
+      "type": "image_picker",
+      "id": "gradient_image",
+      "label": "Gradient image"
+    },
+    {
+      "type": "range",
+      "id": "gradient_position_x",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Gradient position X",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "gradient_position_y",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Gradient position Y",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "gradient_size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "label": "Gradient size",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "gradient_z_index",
+      "min": -5,
+      "max": 10,
+      "step": 1,
+      "label": "Gradient z-index",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-App Download"
+    }
+  ]
+}
+{% endschema %}

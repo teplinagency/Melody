@@ -1,0 +1,119 @@
+.s-app-download {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--Body);
+}
+
+.s-app-download__background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  max-width: none;
+  height: auto;
+}
+
+.s-app-download__background--gradient {
+  left: var(--bg-gradient-x, 50%);
+  top: var(--bg-gradient-y, 50%);
+  width: var(--bg-gradient-size, 120%);
+  z-index: var(--bg-gradient-z, 0);
+  max-height: 1240px;
+}
+
+.s-app-download__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.s-app-download__card {
+  width: 100%;
+}
+
+.s-app-download__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s-app-download__image {
+  display: block;
+  width: min(851px, 100%);
+  height: auto;
+}
+
+.s-app-download__content {
+  max-width: 620px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.s-app-download__title {
+  margin: 0;
+}
+
+.s-app-download__text {
+  margin: 0;
+  max-width: 424px;
+  line-height: 130%;
+  margin-top: 3px;
+}
+
+.s-app-download__badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.s-app-download__badge {
+  display: inline-flex;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.s-app-download__badge:hover {
+  transform: translateY(-2px);
+}
+
+.s-app-download__badge-image {
+  display: block;
+  height: auto;
+  width: clamp(140px, 18vw, 180px);
+}
+
+@media (max-width: 768px) {
+  .s-app-download__badges{
+    margin-top: 20px;
+  }
+  .s-app-download__title{
+    padding: 0 22px
+  }
+  .s-app-download__inner {
+    gap: 53px;
+  }
+
+  .s-app-download__card {
+    padding: unset;
+    border-radius: 11.563px;
+  }
+
+  .s-app-download__content {
+    gap: 30px;
+  }
+
+  .s-app-download__badge-image {
+    width: clamp(130px, 42.4vw, 160px);
+  }
+}

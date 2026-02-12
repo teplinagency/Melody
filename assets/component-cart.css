@@ -24,13 +24,16 @@ cart-items.is-empty .title-wrapper-with-link,
 .cart__empty-text {
   margin: 4.5rem 0 2rem;
 }
+.quantity-popover-container * {
+  color: #fff !important;
+}
 
 .cart__contents > * + * {
   margin-top: 2.5rem;
 }
 
 .cart__login-title {
-  margin: 5.5rem 0 0.5rem;
+  margin: 3.5rem 0 3.5rem;
 }
 
 .cart__login-paragraph {
