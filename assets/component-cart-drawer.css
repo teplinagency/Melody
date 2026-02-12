@@ -183,6 +183,7 @@ cart-drawer {
 
 .cart-drawer .drawer__cart-items-wrapper *{
   color: #fff !important;
+  background-color: transparent;
 } 
 
 .cart-drawer .cart-items,

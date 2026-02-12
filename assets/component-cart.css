@@ -23,6 +23,7 @@ cart-items.is-empty .title-wrapper-with-link,
 
 .cart__empty-text {
   margin: 4.5rem 0 2rem;
+  color: #fff;
 }
 .quantity-popover-container * {
   color: #fff !important;
@@ -34,6 +35,7 @@ cart-items.is-empty .title-wrapper-with-link,
 
 .cart__login-title {
   margin: 3.5rem 0 3.5rem;
+  color: #fff;
 }
 
 .cart__login-paragraph {
@@ -42,6 +44,7 @@ cart-items.is-empty .title-wrapper-with-link,
 
 .cart__login-paragraph a {
   font-size: inherit;
+  color: #fff;
 }
 
 @media screen and (min-width: 990px) {

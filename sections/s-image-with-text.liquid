@@ -36,11 +36,70 @@
           </p>
         {% endif %}
 
+
+
+
+        {%- if settings.pre_order_product != blank -%}
+          {%- assign hero_product = settings.pre_order_product -%}
+          {%- assign hero_product_form_id = 'S-Hero-ProductForm-' | append: section.id -%}
+          <product-form class="s-hero-banner__cta product-form" data-section-id="{{ section.id }}">
+            <div class="product-form__error-message-wrapper" role="alert" hidden>
+              <span class="svg-wrapper">
+                {{- 'icon-error.svg' | inline_asset_content -}}
+              </span>
+              <span class="product-form__error-message"></span>
+            </div>
+            {%- form 'product',
+              hero_product,
+              id: hero_product_form_id,
+              class: 'form',
+              novalidate: 'novalidate',
+              data-type: 'add-to-cart-form'
+            -%}
+              <input
+                type="hidden"
+                name="id"
+                value="{{ hero_product.selected_or_first_available_variant.id }}"
+                {% if hero_product.selected_or_first_available_variant.available == false
+                  or hero_product.selected_or_first_available_variant == null
+                %}
+                  disabled
+                {% endif %}
+                class="product-variant-id"
+              >
+              <button
+                id="ProductSubmitButton-{{ section.id }}"
+                type="submit"
+                name="add"
+                class="btn btn--primary s-image-with-text__cta"
+                {% if hero_product.selected_or_first_available_variant.available == false
+                  or hero_product.selected_or_first_available_variant == null
+                %}
+                  disabled
+                {% endif %}
+              >
+                <span>
+                  {%- if hero_product.selected_or_first_available_variant == null -%}
+                    {{ 'products.product.unavailable' | t }}
+                  {%- elsif hero_product.selected_or_first_available_variant.available == false -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- else -%}
+                    {{ section.settings.button_label }} 
+                  {%- endif -%}
+                </span>
+                {%- render 'loading-spinner' -%}
+              </button>
+            {%- endform -%}
+          </product-form>
+        {%- else -%}
         {% if section.settings.button_label != blank %}
           <a class="btn btn--primary s-image-with-text__cta" href="{{ section.settings.button_link | default: '#' }}">
             {{ section.settings.button_label }}
           </a>
         {% endif %}
+        {%- endif -%}
+
+      
       </div>
     </div>
   </div>
