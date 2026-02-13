@@ -191,7 +191,6 @@
         border: 1px solid transparent;
         box-shadow: var(--Button-Box-Shadow);
         color: var(--Button-Text);
-        background-repeat: space;
     }
     
     .btn--secondary{
