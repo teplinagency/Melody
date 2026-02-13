@@ -64,6 +64,7 @@
     --Button-Background-Alternative:#6176FF;
     --Button-Box-Shadow-Alternative: 0 0 11px 0 rgba(181, 191, 255, 0.70);
     --Button-Text-Alternative:#FFF;
+    --Button-Border-Alternative: #6176FF
 }
     footer,
     body{
