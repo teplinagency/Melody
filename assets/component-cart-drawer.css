@@ -21,6 +21,7 @@
   max-width: calc(100vw - 3rem);
   padding: 0 1.5rem;
   border: unset !important;
+  outline: none !important;
   border-right: 0;
   overflow: hidden;
   display: flex;
