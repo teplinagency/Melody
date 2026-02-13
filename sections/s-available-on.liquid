@@ -41,19 +41,18 @@
           {% endif %}
 
           {% if block.settings.link_label != blank %}
-            <a class="s-available-on__link typography typography--paragraph typography--grey" href="{{ block.settings.link_url | default: '#' }}">
+            <button type="button" class="s-available-on__link typography typography--paragraph typography--grey" aria-expanded="false" aria-controls="s-available-on-list-{{ section.id }}-{{ block.id }}" id="s-available-on-trigger-{{ section.id }}-{{ block.id }}" data-s-available-on-trigger>
               {{ block.settings.link_label }}
               <span class="s-available-on__link-icon" aria-hidden="true">
                 <svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 10L10 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M4 2H10V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
-            </a>
+            </button>
           {% endif %}
 
           {% if block.settings.items != blank %}
-            <div class="s-available-on__list typography typography--h4">
+            <div class="s-available-on__list typography typography--h4" id="s-available-on-list-{{ section.id }}-{{ block.id }}" role="region" aria-labelledby="s-available-on-trigger-{{ section.id }}-{{ block.id }}">
               {{ block.settings.items }}
             </div>
           {% endif %}
@@ -62,6 +61,22 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const section = document.getElementById('section-{{ section.id }}');
+    if (!section) return;
+    section.querySelectorAll('[data-s-available-on-trigger]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        const listId = this.getAttribute('aria-controls');
+        const list = listId ? section.querySelector('#' + listId) : null;
+        this.setAttribute('aria-expanded', !expanded);
+        this.closest('.s-available-on__item')?.classList.toggle('is-open', !expanded);
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -156,13 +171,8 @@
         {
           "type": "text",
           "id": "link_label",
-          "label": "Link label",
+          "label": "Dropdown title",
           "default": "Check your device"
-        },
-        {
-          "type": "url",
-          "id": "link_url",
-          "label": "Link URL"
         },
         {
           "type": "richtext",
