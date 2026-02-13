@@ -165,6 +165,7 @@
         line-height: 120%; 
         text-decoration: unset;
         border: 1px solid transparent;
+        background-repeat: space;
     }
     .btn:hover{
         background: unset;
