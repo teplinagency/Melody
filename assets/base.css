@@ -3189,7 +3189,7 @@ details-disclosure > details {
 }
 
 .rte a:hover {
-  color: rgb(var(--color-link));
+  color: #fff;
   text-decoration-thickness: 0.2rem;
 }
 
