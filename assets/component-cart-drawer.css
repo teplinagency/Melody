@@ -23,6 +23,7 @@
   border: unset !important;
   outline: none !important;
   border-right: 0;
+  border-left: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -30,6 +31,11 @@
   transition: transform var(--duration-default) ease;
   /* background-color:#fff; */
   background: radial-gradient(120% 120% at 0% 0%, #1a1b2d, #0b0b11 62%);
+  /* Safari macOS: avoid white stripe on left edge (subpixel/compositing bug) */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  margin-left: -1px;
+  box-shadow: -1px 0 0 0 #0b0b11;
 }
 /* .drawer__inner * {
   color: #fff !important;
@@ -71,7 +77,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 }
 
 .drawer.active .drawer__inner {
-  transform: translateX(0);
+  transform: translateX(0) translateZ(0);
 }
 
 .drawer__header {
