@@ -165,7 +165,7 @@
         line-height: 120%; 
         text-decoration: unset;
         border: 1px solid transparent;
-        background-repeat: space;
+        
     }
     .btn:hover{
         background: unset;
@@ -191,6 +191,7 @@
         border: 1px solid transparent;
         box-shadow: var(--Button-Box-Shadow);
         color: var(--Button-Text);
+        background-repeat: space;
     }
     
     .btn--secondary{
