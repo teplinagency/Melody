@@ -2513,7 +2513,7 @@ input[type='checkbox'] {
   align-items: center;
 }
 .header__icons svg path{
-  fill: #fff;
+     fill: #51f5cf;
 }
 
 .header__icons .shopify-app-block {
