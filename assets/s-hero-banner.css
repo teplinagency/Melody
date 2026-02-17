@@ -14,7 +14,7 @@
    display: flex;
    flex-direction: column;
    align-items: center;
-   gap: 16px;
+   gap: 30px;
  }
  
  .s-hero-banner__eyebrow {
@@ -75,7 +75,7 @@
   }
    .s-hero-banner__inner {
      padding: 61px 16px 0;
-     gap: 14px;
+     gap: 16px;
    }
  
    .s-hero-banner__image {

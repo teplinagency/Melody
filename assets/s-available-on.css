@@ -90,9 +90,9 @@
   position: relative;
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
-.s-available-on__list ul li::before{
+/* .s-available-on__list ul li::before{
   content: '';
   position: absolute;
   left: -13px;
@@ -100,7 +100,7 @@
   width: 4px;
   height: 4px;
   background-color: var(--Text-Secondary);
-}
+} */
 
 .s-available-on__list p {
   margin-top: unset;
