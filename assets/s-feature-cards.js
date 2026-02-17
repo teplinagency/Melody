@@ -13,7 +13,7 @@
           el._swiper = new window.Swiper(el, {
             slidesPerView: 1.58,
             spaceBetween: 20,
-            // loop:true,
+            loop:true
           });
         }
       } else {
