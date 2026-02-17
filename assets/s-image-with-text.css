@@ -70,6 +70,14 @@
 }
 
 @media (max-width: 768px) {
+
+  .s-image-with-text__cta{
+    margin-top: 30px;
+  }
+
+  .s-image-with-text__inner{
+    padding: 0 22px;
+  }
   
   .s-image-with-text__card {
     grid-template-columns: 1fr;
