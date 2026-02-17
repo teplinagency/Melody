@@ -88,9 +88,9 @@
     }
 
     .s-feature-cards .swiper-wrapper {
-        /* display: flex;
+        display: flex;
         gap: 0;
-        transform: translate3d(0, 0, 0); */
+        transform: translate3d(0, 0, 0);
     }
 
     .s-feature-cards .swiper-slide {
