@@ -352,11 +352,11 @@
 
         {% if section.settings.hide_header_cart == false %}
           <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-            {% if cart == empty %}
+            {% comment %} {% if cart == empty %}
               <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-            {% else %}
+            {% else %} {% endcomment %}
               <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
             <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
             {%- if cart != empty -%}
               <div class="cart-count-bubble">
