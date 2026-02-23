@@ -44,7 +44,9 @@
       "settings": {
         "heading": "The AI Control Interactive Toy",
         "eyebrow_text": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR",
+        "media_type": "image",
         "hero_image": "shopify://shop_images/2026.01.16_render_02_with_alpha_cf81de34-b157-4ad9-9ec2-c93b33248a02.png",
+        "hero_video": "shopify://files/videos/Adobe Express - 2 (2).mp4",
         "product": "melody",
         "button_label": "Pre-order now",
         "button_link": "",

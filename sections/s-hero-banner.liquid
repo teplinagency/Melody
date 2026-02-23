@@ -43,7 +43,22 @@
     {% endif %}
  
 
-    {% if section.settings.hero_image != blank %}
+    {% if section.settings.media_type == 'video' and section.settings.hero_video != blank %}
+      <div class="s-hero-banner__media">
+        <video
+          class="s-hero-banner__video"
+          autoplay
+          muted
+          playsinline
+          loop
+          aria-label="{{ section.settings.heading | default: 'Hero video' }}"
+        >
+          {% for source in section.settings.hero_video.sources %}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {% endfor %}
+        </video>
+      </div>
+    {% elsif section.settings.hero_image != blank %}
       <div class="s-hero-banner__media">
         {{ section.settings.hero_image
           | image_url: width: 800
@@ -144,9 +159,24 @@
       "default": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR"
     },
     {
+      "type": "select",
+      "id": "media_type",
+      "label": "Hero media type",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ],
+      "default": "image"
+    },
+    {
       "type": "image_picker",
       "id": "hero_image",
       "label": "Hero image"
+    },
+    {
+      "type": "video",
+      "id": "hero_video",
+      "label": "Hero video"
     },
     {
       "type": "product",
