@@ -3517,6 +3517,10 @@ details-disclosure > details {
   display: inline-block;
 }
 
+.loading__spinner svg {
+  color: #74799B;
+}
+
 .spinner {
   animation: rotator 1.4s linear infinite;
 }
