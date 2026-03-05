@@ -28,12 +28,14 @@
  }
 
  .s-hero-banner__image{
-   width: clamp(180px, 22vw, 320px);
+   /* width: clamp(180px, 22vw, 320px); */
    height: auto;
    display: block;
-   max-width: 242px;
+   /* max-width: 242px; */
    border: none;
    outline: none;
+   width: 100%;
+   max-width: 100% 
  }
 
  .s-hero-banner__video{
