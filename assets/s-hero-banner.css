@@ -35,7 +35,8 @@
    border: none;
    outline: none;
    width: 100%;
-   max-width: 100% 
+   max-width: 320px;
+   margin: 0 auto 
  }
 
  .s-hero-banner__video{
