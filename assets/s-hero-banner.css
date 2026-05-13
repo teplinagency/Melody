@@ -100,10 +100,14 @@
  
    .s-hero-banner__media {
      margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
    }
 
    .s-hero-banner__image {
-     width: clamp(160px, 46vw, 240px);
-     max-width: 161px;
+      width: 140vw;
+      max-width: 140vw;
    }
  }
