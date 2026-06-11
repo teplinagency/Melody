@@ -163,7 +163,7 @@
       "name": "S-Image With Text",
       "settings": {
         "eyebrow_text": "EVERY DETAIL IS IMPORTANT",
-        "heading": "<p>The first AI stroker<br/>that learns your rhythm <br/>and takes control.</p>",
+        "heading": "<p>The first AI haptic controller<br/>that learns your rhythm <br/>and takes control.</p>",
         "text": "Every detail is engineered for immersive precision: a brushless motor delivers smooth, seamless motion; silent operation keeps the focus entirely on sensation; and wireless connectivity unlocks full interactive control through VR or AI-synced scripts.",
         "button_label": "Try it first",
         "button_link": "",
@@ -183,7 +183,7 @@
             "icon": "none",
             "title": "1–150",
             "link_label": "",
-            "items": "<p>Stroke speed per minute</p>"
+            "items": "<p>Cycles per minute</p>"
           }
         },
         "platform_hBNB4N": {
@@ -192,7 +192,7 @@
             "icon": "none",
             "title": "4.7 in / 12 cm",
             "link_label": "",
-            "items": "<p>Stroke length</p>"
+            "items": "<p>Motion range</p>"
           }
         },
         "platform_ba6Cib": {
