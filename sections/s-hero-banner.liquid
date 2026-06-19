@@ -96,28 +96,41 @@
               {% endif %}
               class="product-variant-id"
             >
-            <button
-              id="ProductSubmitButton-{{ section.id }}"
-              type="submit"
-              name="add"
-              class="btn btn--primary btn--banner"
-              {% if hero_product.selected_or_first_available_variant.available == false
-                or hero_product.selected_or_first_available_variant == null
-              %}
-                disabled
-              {% endif %}
-            >
-              <span>
-                {%- if hero_product.selected_or_first_available_variant == null -%}
-                  {{ 'products.product.unavailable' | t }}
-                {%- elsif hero_product.selected_or_first_available_variant.available == false -%}
-                  {{ 'products.product.sold_out' | t }}
-                {%- else -%}
-                  {{ section.settings.button_label }} - {{ hero_product.price | money}}
-                {%- endif -%}
-              </span>
-              {%- render 'loading-spinner' -%}
-            </button>
+
+            {% comment %} Стилизованная форма Waitlist в фирменном стиле Melody {% endcomment %}
+            <div class="hero-waitlist-wrapper" style="margin-top: 24px; width: 100%; max-width: 540px; text-align: left; display: inline-block;">
+              {% form 'customer' %}
+                {{ form.errors | default_errors }}
+                {% if form.posted_successfully? %}
+                  <p class="form-success" style="color: #4CAF50; font-weight: 500; margin: 10px 0 0 0; font-size: 1.6rem; text-align: center;">
+                    Thank you! You have been added to our waitlist.
+                  </p>
+                {% else %}
+                  <input type="hidden" name="contact[tags]" value="waitlist, hero-banner">
+                  
+                  <div class="melody-input-group" style="display: flex; gap: 16px; align-items: center; width: 100%;">
+                    <input 
+                      type="email" 
+                      name="contact[email]" 
+                      placeholder="Your e-mail" 
+                      required 
+                      style="flex-grow: 1; height: 54px; padding: 0 24px; border: none; background: #161824; color: #fff; font-size: 1.6rem; border-radius: 18px; outline: none; transition: background 0.2s;"
+                      onfocus="this.style.background='#1c1f2e'"
+                      onblur="this.style.background='#161824'"
+                    >
+                    <button 
+                      type="submit" 
+                      style="height: 54px; padding: 0 32px; background: #5a6eff; color: #fff; border: none; border-radius: 27px; cursor: pointer; font-weight: 600; font-size: 1.6rem; white-space: nowrap; box-shadow: 0 0 20px rgba(90, 110, 255, 0.4); transition: transform 0.2s, box-shadow 0.2s;"
+                      onmouseover="this.style.transform='scale(1.02)'; this.style.box-shadow='0 0 25px rgba(90, 110, 255, 0.6)';"
+                      onmouseout="this.style.transform='scale(1)'; this.style.box-shadow='0 0 20px rgba(90, 110, 255, 0.4)';"
+                    >
+                      Join Waitlist
+                    </button>
+                  </div>
+                {% endif %}
+              {% endform %}
+            </div>
+
           {%- endform -%}
         </product-form>
       {%- else -%}
@@ -347,5 +360,4 @@
     }
   ]
 }
-
 {% endschema %}
