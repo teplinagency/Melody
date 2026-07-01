@@ -230,6 +230,9 @@
 
     {% if section.settings.hide_header_icons == false %}
       <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
+        
+        {% comment %} ВРЕМЕННО СКРЫВАЕМ КНОПКУ PRE-ORDER В ШАПКЕ САЙТА ДЛЯ КОМПЛАЕНСА {% endcomment %}
+        {% comment %}
         {% if section.settings.show_pre_order_product_btn == true %}
           {% if section.settings.button_label != blank %}
               {%- assign hero_product = settings.pre_order_product -%}
@@ -285,6 +288,8 @@
               </product-form>
           {% endif %}
         {% endif %}
+        {% endcomment %}
+
         <div class="desktop-localization-wrapper">
           {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
             <localization-form class="small-hide medium-hide" data-prevent-hide>
@@ -350,13 +355,11 @@
           {%- endcase -%}
         {%- endfor -%}
 
+        {% comment %} ВРЕМЕННО СКРЫВАЕМ ИКОНКУ КОРЗИНЫ В ШАПКЕ САЙТА ДЛЯ КОМПЛАЕНСА {% endcomment %}
+        {% comment %}
         {% if section.settings.hide_header_cart == false %}
           <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-            {% comment %} {% if cart == empty %}
-              <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-            {% else %} {% endcomment %}
               <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-            {% comment %} {% endif %} {% endcomment %}
             <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
             {%- if cart != empty -%}
               <div class="cart-count-bubble">
@@ -368,6 +371,8 @@
             {%- endif -%}
           </a>
         {% endif %}
+        {% endcomment %}
+        
       </div>
     {% endif %}
   </header>
