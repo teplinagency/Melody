@@ -74,6 +74,12 @@
       padding-top: 0.5rem;
     }
   }
+
+  /* Force header to be completely solid/opaque on scroll */
+  .scrolled-past-header .header-wrapper {
+    background: rgb(var(--color-background)) !important;
+    opacity: 1 !important;
+  }
 </style>
 
 {% comment %} padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem; {% endcomment %}
