@@ -75,9 +75,10 @@
     }
   }
 
-  /* Force header to be completely solid/opaque on scroll */
-  .scrolled-past-header .header-wrapper {
-    background: rgb(var(--color-background)) !important;
+  /* Исправление: жестко заливаем шапку глубоким темным цветом при скролле */
+  .scrolled-past-header .header-wrapper,
+  .scrolled-past-header sticky-header {
+    background: #0b0c10 !important;
     opacity: 1 !important;
   }
 </style>
