@@ -58,9 +58,16 @@
         api_host: 'https://api-eu.mixpanel.com',
       })
 
-      mixpanel.track("Page View", {
-        user_agent: navigator.userAgent
-      })
+      mixpanel.register({
+        raw_user_agent: navigator.userAgent
+      });
+
+      fetch('https://api.ipify.org?format=json')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          mixpanel.register({ ip_address: data.ip });
+        })
+        .catch(function() {});
     </script>
 
     {%- if settings.animations_reveal_on_scroll -%}
