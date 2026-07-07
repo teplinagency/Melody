@@ -57,6 +57,10 @@
         record_sessions_percent: 100,
         api_host: 'https://api-eu.mixpanel.com',
       })
+
+      mixpanel.track("Page View", {
+        user_agent: navigator.userAgent
+      })
     </script>
 
     {%- if settings.animations_reveal_on_scroll -%}
