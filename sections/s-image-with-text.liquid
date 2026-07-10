@@ -37,8 +37,8 @@
         {% endif %}
 
 
-
-
+        {% comment %} ВРЕМЕННО СКРЫВАЕМ КНОПКУ КУПИТЬ / SOLD OUT ДЛЯ КОМПЛАЕНСА {% endcomment %}
+        {% comment %}
         {%- if settings.pre_order_product != blank -%}
           {%- assign hero_product = settings.pre_order_product -%}
           {%- assign hero_product_form_id = 'S-Hero-ProductForm-' | append: section.id -%}
@@ -98,6 +98,7 @@
           </a>
         {% endif %}
         {%- endif -%}
+        {% endcomment %}
 
       
       </div>
