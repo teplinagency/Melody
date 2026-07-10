@@ -36,8 +36,7 @@
           </p>
         {% endif %}
 
-
-        {% comment %} ВРЕМЕННО СКРЫВАЕМ КНОПКУ КУПИТЬ / SOLD OUT ДЛЯ КОМПЛАЕНСА {% endcomment %}
+        {% comment %} Старая кнопка Sold out скрыта в комментарии {% endcomment %}
         {% comment %}
         {%- if settings.pre_order_product != blank -%}
           {%- assign hero_product = settings.pre_order_product -%}
@@ -100,7 +99,41 @@
         {%- endif -%}
         {% endcomment %}
 
-      
+        {% comment %} Новая форма Waitlist в стиле Melody для середины страницы {% endcomment %}
+        <div class="body-waitlist-wrapper" style="margin-top: 24px; width: 100%; max-width: 540px; text-align: left; display: inline-block;">
+          {% form 'customer', id: 'BodyWaitlistForm' %}
+            {{ form.errors | default_errors }}
+            {% if form.posted_successfully? %}
+              <p class="form-success" style="color: #4CAF50; font-weight: 500; margin: 10px 0 0 0; font-size: 1.6rem; text-align: center;">
+                Thank you! You have been added to our waitlist.
+              </p>
+            {% else %}
+              <input type="hidden" name="contact[tags]" value="waitlist, image-with-text-banner">
+              
+              <div class="melody-input-group" style="display: flex; gap: 16px; align-items: center; width: 100%;">
+                <input 
+                  type="email" 
+                  name="contact[email]" 
+                  placeholder="Your e-mail" 
+                  value="{{ form.email }}"
+                  required 
+                  style="flex-grow: 1; height: 54px; padding: 0 24px; border: none; background: #161824; color: #fff; font-size: 1.6rem; border-radius: 18px; outline: none; transition: background 0.2s;"
+                  onfocus="this.style.background='#1c1f2e'"
+                  onblur="this.style.background='#161824'"
+                >
+                <button 
+                  type="submit" 
+                  style="height: 54px; padding: 0 32px; background: #5a6eff; color: #fff; border: none; border-radius: 27px; cursor: pointer; font-weight: 600; font-size: 1.6rem; white-space: nowrap; box-shadow: 0 0 20px rgba(90, 110, 255, 0.4); transition: transform 0.2s, box-shadow 0.2s;"
+                  onmouseover="this.style.transform='scale(1.02)'; this.style.box-shadow='0 0 25px rgba(90, 110, 255, 0.6)';"
+                  onmouseout="this.style.transform='scale(1)'; this.style.box-shadow='0 0 20px rgba(90, 110, 255, 0.4)';"
+                >
+                  Get it now
+                </button>
+              </div>
+            {% endif %}
+          {% endform %}
+        </div>
+
       </div>
     </div>
   </div>
