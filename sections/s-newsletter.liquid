@@ -72,10 +72,15 @@
       {% if section.settings.note_text != blank %}
         <p class="s-newsletter__note typography typography--slim typography--grey typography--center">
           {{ section.settings.note_text }}
-          {% if section.settings.note_link_label != blank %}
-            <a class="s-newsletter__note-link typography typography--underline" href="{{ section.settings.note_link_url | default: '#' }}">
-              {{ section.settings.note_link_label }}
-            </a>
+          {% if section.settings.note_text != blank %}
+            <p class="s-newsletter__note typography typography--slim typography--grey typography--center">
+              {{ section.settings.note_text }}
+              {% if section.settings.note_link_label != blank %}
+                <a class="s-newsletter__note-link typography typography--underline" href="{{ section.settings.note_link_url | default: '#' }}" target="_blank" rel="noopener">
+                  {{ section.settings.note_link_label }}
+                </a>
+              {% endif %}
+            </p>
           {% endif %}
         </p>
       {% endif %}
