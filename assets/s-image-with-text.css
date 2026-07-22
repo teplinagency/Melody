@@ -14,6 +14,7 @@
   border-radius: 30px;
   background: #131320;
   padding-bottom: unset;
+  overflow: hidden;
 }
 
 .s-image-with-text__media {
