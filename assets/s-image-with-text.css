@@ -25,6 +25,7 @@
 
 .s-image-with-text__image {
   display: block;
+  width: 100%;
   max-width: 460px;
   height: auto;
   margin-bottom: -20px;
@@ -63,9 +64,6 @@
 @media(max-width:1120px){
   .s-image-with-text__card{
     padding-bottom: 60px;
-  }
-  .s-image-with-text__image{
-    max-width: 400px;
   }
 }
 
