@@ -3606,3 +3606,13 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.shopify-challenge__button {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border: 1px solid #121212 !important;
+}
+
+.shopify-challenge__button:hover {
+  background-color: #2a2a2a !important;
+}
