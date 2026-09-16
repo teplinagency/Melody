@@ -43,13 +43,14 @@
       "custom_css": [],
       "name": "S-Hero Banner",
       "settings": {
+        "frame_enabled": true,
         "heading": "Melody – The AI-Controlled Interactive Toy",
         "eyebrow_text": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR",
         "media_type": "image",
         "hero_image": "shopify://shop_images/Melody_5_9c2958be-3290-4ee7-9b56-20cdb0556642.gif",
         "hero_video": "shopify://files/videos/Adobe Express - 2 (2).mp4",
         "product": "melody",
-        "button_label": "Pre-order now",
+        "button_label": "Join Waitlist",
         "button_link": "",
         "note_text": "Pre-orders will be available soon. Shipping in Q4 2026.",
         "gradient_image": "shopify://shop_images/Vector_42.png",
@@ -165,7 +166,7 @@
         "eyebrow_text": "EVERY DETAIL IS IMPORTANT",
         "heading": "<p>The first AI haptic controller<br/>that learns your rhythm <br/>and takes control.</p>",
         "text": "Every detail is engineered for immersive precision: a brushless motor delivers smooth, seamless motion; silent operation keeps the focus entirely on sensation; and wireless connectivity unlocks full interactive control through VR or AI-synced scripts.",
-        "button_label": "Try it first",
+        "button_label": "Join Waitlist",
         "button_link": "",
         "image": "shopify://shop_images/Rectangle_16.png",
         "padding-top": 110,
@@ -226,6 +227,16 @@
         "padding-bottom-mobile": 0
       }
     },
+    "s_content_library_Kp2mQd": {
+      "type": "s-content-library",
+      "name": "S-Content Library",
+      "settings": {
+        "padding-top": 120,
+        "padding-bottom": 90,
+        "padding-top-mobile": 100,
+        "padding-bottom-mobile": 90
+      }
+    },
     "s_app_download_ikXMzN": {
       "type": "s-app-download",
       "name": "S-App Download",
@@ -255,7 +266,7 @@
         "eyebrow_text": "RESERVE YOURS",
         "heading": "Be first to feel what's next.",
         "email_placeholder": "Your e-mail",
-        "button_label": "Get it now",
+        "button_label": "Join Waitlist",
         "success_message": "Thanks for joining the list.",
         "note_text": "Looking for more information?",
         "note_link_label": "Check the forum",
@@ -274,6 +285,7 @@
     "s_available_on_jWKQbw",
     "s_image_with_text_yEmBBr",
     "s_available_on_bAB63F",
+    "s_content_library_Kp2mQd",
     "s_app_download_ikXMzN",
     "s_newsletter_g0J4mP"
   ]

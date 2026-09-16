@@ -1,0 +1,309 @@
+{{ 's-content-library.css' | asset_url | stylesheet_tag }}
+
+{% render 'section-padding' %}
+
+{%- liquid
+  assign badge_glow_alpha = section.settings.badge_glow_opacity | divided_by: 100.0
+  assign badge_glow_rgba = section.settings.badge_glow_color | color_modify: 'alpha', badge_glow_alpha
+-%}
+
+<section
+  id="section-{{ section.id }}"
+  class="s-content-library typography"
+  style="
+    --eyebrow-color: {{ section.settings.eyebrow_color }};
+    --number-gradient: {{ section.settings.number_gradient }};
+    --number-size: {{ section.settings.number_size }}px;
+    --number-size-mobile: {{ section.settings.number_size_mobile }}px;
+    --number-offset: {{ section.settings.number_offset }}px;
+    --number-offset-mobile: {{ section.settings.number_offset_mobile }}px;
+    --text-color: {{ section.settings.text_color }};
+    --eyebrow-size: {{ section.settings.eyebrow_size }}px;
+    --text-size: {{ section.settings.text_size }}px;
+    --content-width: {{ section.settings.content_width }}px;
+    --gap: {{ section.settings.gap }}px;
+    --gap-mobile: {{ section.settings.gap_mobile }}px;
+    --badge-font-size: {{ section.settings.badge_font_size }}px;
+    --badge-bg: {{ section.settings.badge_bg }};
+    --badge-glow: 0 0 {{ section.settings.badge_glow_size }}px 0 {{ badge_glow_rgba }};
+    --badge-text: {{ section.settings.badge_text_color }};
+    --badge-highlight: {{ section.settings.badge_highlight_color }};
+  "
+>
+  <div class="s-content-library__inner">
+    <div class="s-content-library__stat">
+      {% if section.settings.eyebrow_text != blank %}
+        <p class="s-content-library__eyebrow">{{ section.settings.eyebrow_text }}</p>
+      {% endif %}
+      {% if section.settings.number != blank %}
+        <p class="s-content-library__number">{{ section.settings.number }}</p>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <p class="s-content-library__text">{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    {% if section.settings.badge_text != blank %}
+      <div class="s-content-library__badge">
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "S-Content Library",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Content library"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Big number",
+      "default": "50,000+"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Description",
+      "default": "Videos your device syncs with — right out of the box."
+    },
+    {
+      "type": "header",
+      "content": "Styling"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#74799B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Description color",
+      "default": "#74799B"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Eyebrow font size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Description font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 400,
+      "max": 1200,
+      "step": 10,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 810
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap before badge",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap before badge mobile",
+      "default": 52
+    },
+    {
+      "type": "color_background",
+      "id": "number_gradient",
+      "label": "Number gradient",
+      "default": "linear-gradient(90deg, rgba(106, 126, 255, 0.5) 0%, rgba(150, 122, 255, 0.5) 100%), linear-gradient(270deg, #4CFFCC 8%, #909FFF 100%)"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 60,
+      "max": 240,
+      "step": 2,
+      "unit": "px",
+      "label": "Number font size",
+      "default": 178
+    },
+    {
+      "type": "range",
+      "id": "number_size_mobile",
+      "min": 40,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Number font size mobile",
+      "default": 76
+    },
+    {
+      "type": "range",
+      "id": "number_offset",
+      "min": -100,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Number offset from eyebrow",
+      "info": "Negative values pull the number up under the eyebrow",
+      "default": -24
+    },
+    {
+      "type": "range",
+      "id": "number_offset_mobile",
+      "min": -100,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Number offset from eyebrow mobile",
+      "default": -8
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "richtext",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Bold text uses the highlight color, the rest uses the text color. Leave empty to hide.",
+      "default": "<p>Comes with <strong>50,000+</strong> videos</p>"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#BBBBBB"
+    },
+    {
+      "type": "color",
+      "id": "badge_highlight_color",
+      "label": "Highlight (bold) color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "color_background",
+      "id": "badge_bg",
+      "label": "Background",
+      "default": "rgba(97, 118, 255, 0.11)"
+    },
+    {
+      "type": "color",
+      "id": "badge_glow_color",
+      "label": "Glow color",
+      "default": "#6176FF"
+    },
+    {
+      "type": "range",
+      "id": "badge_glow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Glow opacity",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "badge_glow_size",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Glow size",
+      "default": 84
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding-top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-top-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-bottom-mobile",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "S-Content Library"
+    }
+  ]
+}
+{% endschema %}

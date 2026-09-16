@@ -1,12 +1,26 @@
 {{'s-hero-banner.css' | asset_url | stylesheet_tag}}
+{%- if section.settings.media_type != 'video' and section.settings.hero_image != blank -%}
+  {%- comment -%} Start fetching the hero GIF as early as possible; Safari otherwise plays it while still downloading (stutter) {%- endcomment -%}
+  <link rel="preload" as="image" href="{{ section.settings.hero_image | image_url: width: 800 }}" fetchpriority="high">
+{%- endif -%}
 <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {% render 'section-padding' %}
 
+{%- liquid
+  assign badge_glow_alpha = section.settings.badge_glow_opacity | divided_by: 100.0
+  assign badge_glow_rgba = section.settings.badge_glow_color | color_modify: 'alpha', badge_glow_alpha
+-%}
+
 <section
   id="section-{{ section.id }}"
-  class="s-hero-banner typography"
+  class="s-hero-banner typography{% if section.settings.frame_enabled %} s-hero-banner--framed{% endif %}"
   style="
+    --frame-radius: {{ section.settings.frame_radius }}px;
+    --frame-inset: {{ section.settings.frame_inset }}px;
+    --frame-inset-mobile: {{ section.settings.frame_inset_mobile }}px;
+    --frame-bg: {{ section.settings.frame_bg }};
+    --frame-border: {{ section.settings.frame_border_color }};
     --bg-gradient-x: {{ section.settings.gradient_position_x }}%;
     --bg-gradient-y: {{ section.settings.gradient_position_y }}%;
     --bg-gradient-size: {{ section.settings.gradient_size }}%;
@@ -15,8 +29,17 @@
     --bg-circles-y: {{ section.settings.circles_position_y }}%;
     --bg-circles-size: {{ section.settings.circles_size }}%;
     --bg-circles-z: {{ section.settings.circles_z_index }};
+    --badge-bg: {{ section.settings.badge_bg }};
+    --badge-bg-mobile: {{ section.settings.badge_bg_mobile }};
+    --badge-glow: 0 0 {{ section.settings.badge_glow_size }}px 0 {{ badge_glow_rgba }};
+    --badge-blur: {{ section.settings.badge_blur }}px;
+    --badge-text: {{ section.settings.badge_text_color }};
+    --badge-highlight: {{ section.settings.badge_highlight_color }};
+    --badge-font-size: {{ section.settings.badge_font_size }}px;
+    --badge-font-size-mobile: {{ section.settings.badge_font_size_mobile }}px;
   "
 >
+  <div class="s-hero-banner__frame">
   {% if section.settings.gradient_image != blank %}
     {{ section.settings.gradient_image
       | image_url: width: 2400
@@ -41,7 +64,11 @@
         {{ section.settings.eyebrow_text }}
       </p>
     {% endif %}
- 
+    {% if section.settings.badge_text != blank %}
+      <div class="s-hero-banner__badge">
+        {{ section.settings.badge_text }}
+      </div>
+    {% endif %}
 
     {% if section.settings.media_type == 'video' and section.settings.hero_video != blank %}
       <div class="s-hero-banner__media">
@@ -62,7 +89,7 @@
       <div class="s-hero-banner__media">
         {{ section.settings.hero_image
           | image_url: width: 800
-          | image_tag: class: 's-hero-banner__image', loading: 'lazy', alt: section.settings.hero_image.alt | default: section.settings.heading
+          | image_tag: class: 's-hero-banner__image', loading: 'eager', fetchpriority: 'high', decoding: 'async', onload: "this.classList.add('is-loaded')", onerror: "this.classList.add('is-loaded')", alt: section.settings.hero_image.alt | default: section.settings.heading
         }}
       </div>
     {% endif %}
@@ -89,25 +116,25 @@
               </p>
             {% else %}
               <input type="hidden" name="contact[tags]" value="waitlist, hero-banner">
-              
+
               <div class="melody-input-group" style="display: flex; gap: 16px; align-items: center; width: 100%;">
-                <input 
-                  type="email" 
-                  name="contact[email]" 
-                  placeholder="Your e-mail" 
+                <input
+                  type="email"
+                  name="contact[email]"
+                  placeholder="Your e-mail"
                   value="{{ form.email }}"
-                  required 
+                  required
                   style="flex-grow: 1; height: 54px; padding: 0 24px; border: none; background: #161824; color: #fff; font-size: 1.6rem; border-radius: 18px; outline: none; transition: background 0.2s;"
                   onfocus="this.style.background='#1c1f2e'"
                   onblur="this.style.background='#161824'"
                 >
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   style="height: 54px; padding: 0 32px; background: #5a6eff; color: #fff; border: none; border-radius: 27px; cursor: pointer; font-weight: 600; font-size: 1.6rem; white-space: nowrap; box-shadow: 0 0 20px rgba(90, 110, 255, 0.4); transition: transform 0.2s, box-shadow 0.2s;"
                   onmouseover="this.style.transform='scale(1.02)'; this.style.box-shadow='0 0 25px rgba(90, 110, 255, 0.6)';"
                   onmouseout="this.style.transform='scale(1)'; this.style.box-shadow='0 0 20px rgba(90, 110, 255, 0.4)';"
                 >
-                  Join Waitlist
+                  {{ section.settings.button_label }}
                 </button>
               </div>
             {% endif %}
@@ -130,6 +157,7 @@
       </p>
     {% endif %}
   </div>
+  </div>
 </section>
 
 {% schema %}
@@ -151,6 +179,97 @@
       "id": "eyebrow_text",
       "label": "Eyebrow text",
       "default": "MATCHES EVERY SCENE ON YOUR SCREEN FROM 2D TO VR"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "richtext",
+      "id": "badge_text",
+      "label": "Badge text",
+      "info": "Bold text uses the highlight color, the rest uses the text color. Leave empty to hide.",
+      "default": "<p>Comes with <strong>50,000+</strong> videos</p>"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text color",
+      "default": "#BBBBBB"
+    },
+    {
+      "type": "color",
+      "id": "badge_highlight_color",
+      "label": "Highlight (bold) color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size mobile",
+      "default": 18
+    },
+    {
+      "type": "color_background",
+      "id": "badge_bg",
+      "label": "Background",
+      "default": "rgba(154, 167, 255, 0.04)"
+    },
+    {
+      "type": "color_background",
+      "id": "badge_bg_mobile",
+      "label": "Background mobile",
+      "default": "rgba(97, 118, 255, 0.11)"
+    },
+    {
+      "type": "range",
+      "id": "badge_blur",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Backdrop blur (desktop only)",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "badge_glow_color",
+      "label": "Glow color",
+      "default": "#6176FF"
+    },
+    {
+      "type": "range",
+      "id": "badge_glow_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Glow opacity",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "badge_glow_size",
+      "min": 0,
+      "max": 150,
+      "step": 2,
+      "unit": "px",
+      "label": "Glow size",
+      "default": 84
     },
     {
       "type": "select",
@@ -181,7 +300,7 @@
       "type": "text",
       "id": "button_label",
       "label": "Button label",
-      "default": "Pre-order now"
+      "default": "Join Waitlist"
     },
     {
       "type": "url",
@@ -193,6 +312,58 @@
       "id": "note_text",
       "label": "Note text",
       "default": "Pre-orders available now. Shipping from May 2026."
+    },
+    {
+      "type": "header",
+      "content": "Frame (rounded container)"
+    },
+    {
+      "type": "checkbox",
+      "id": "frame_enabled",
+      "label": "Wrap hero in a rounded frame",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "frame_radius",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Corner radius",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "frame_inset",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap from page edges",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "frame_inset_mobile",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap from page edges (mobile)",
+      "default": 12
+    },
+    {
+      "type": "color_background",
+      "id": "frame_bg",
+      "label": "Frame background",
+      "default": "#0B0D16"
+    },
+    {
+      "type": "color",
+      "id": "frame_border_color",
+      "label": "Frame border color",
+      "default": "#1F2233"
     },
     {
       "type": "header",

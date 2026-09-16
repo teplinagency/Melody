@@ -127,7 +127,7 @@
                   onmouseover="this.style.transform='scale(1.02)'; this.style.box-shadow='0 0 25px rgba(90, 110, 255, 0.6)';"
                   onmouseout="this.style.transform='scale(1)'; this.style.box-shadow='0 0 20px rgba(90, 110, 255, 0.4)';"
                 >
-                  Get it now
+                  {{ section.settings.button_label }}
                 </button>
               </div>
             {% endif %}
@@ -169,7 +169,7 @@
       "type": "text",
       "id": "button_label",
       "label": "Button label",
-      "default": "Try it first"
+      "default": "Join Waitlist"
     },
     {
       "type": "url",
