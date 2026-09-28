@@ -94,9 +94,17 @@
 }
 
 .footer__copyright--legal {
-  text-align: left;
+  text-align: left !important; /* ponytail: beats Dawn's right-align rule for .footer__copyright on desktop */
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.footer__copyright-text p {
+  margin: 0;
+}
+
+.footer__copyright-text a {
+  color: inherit;
 }
 
 .footer__copyright--legal .copyright__content--legal {

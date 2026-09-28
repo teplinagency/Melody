@@ -332,14 +332,14 @@
         </nav>
       {%- endif -%}
       <div class="footer__copyright footer__copyright--legal caption">
-        <small class="typography typography--slim typography--grey">
+        <div class="footer__copyright-text typography typography--slim typography--grey">
           {%- if section.settings.footer_copyright_text != blank -%}
             {{ section.settings.footer_copyright_text }}
           {%- else -%}
             &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url }}
             {{ powered_by_link }}
           {%- endif -%}
-        </small>
+        </div>
       </div>
     </div>
   </div>
@@ -523,11 +523,11 @@
       "info": "Optional. Links shown above copyright (e.g. Terms & Conditions, Privacy Policy). If empty, shop policies are used when \"Show policy links\" is on."
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "footer_copyright_text",
       "label": "Copyright text",
       "info": "Optional. Leave blank to use default shop name and powered by link.",
-      "default": "© 2025 Melody TM. All rights reserved. Melody, MELODY are trademarks of Melody TM and may not be used without permission."
+      "default": "<p>© 2025 Melody TM. All rights reserved. Melody, MELODY are trademarks of Melody TM and may not be used without permission.</p>"
     },
     {
       "type": "header",
