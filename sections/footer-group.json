@@ -24,7 +24,7 @@
         "payment_enable": true,
         "show_policy": true,
         "footer_legal_menu": "",
-        "footer_copyright_text": "<p>Haptics Interactive Ltd · Spyrou Kyprianou 79, Protopapas Bld., 3076 Limassol, Cyprus VAT: CY10443228J · <a href=\"mailto:support@getmelody.io\" title=\"mailto:support@getmelody.io\">support@getmelody.io</a></p><p>© 2026 Haptics Interactive Ltd. All rights reserved. Melody™ is a trademark of V.R.S. Virtual Reality Technology Ltd.</p>",
+        "footer_copyright_text": "<p>Haptics Interactive Ltd · Spyrou Kyprianou 79, Protopapas Bld., 3076 Limassol, Cyprus VAT: CY10443228J · <a href=\"mailto:support@getmelody.io\" title=\"mailto:support@getmelody.io\">support@getmelody.io</a></p><p>© 2026 Haptics Interactive Ltd. All rights reserved. Melody™ is a trademark of V.R.S. Virtual Reality Technology Ltd.<br/><br/>*Free trial. Converts to a paid subscription unless cancelled. Provider Terms and Conditions apply.</p>",
         "margin_top": 0,
         "padding_top": 52,
         "padding_bottom": 52
